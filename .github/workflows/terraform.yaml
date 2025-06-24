@@ -5,8 +5,14 @@ permissions:
 name: Terraform-AWS-Infra-Deployment
 
 on:
+  push:
+    branches:
+      - main
+      - dev
   pull_request:
-    branches: [main]
+    branches:
+      - main
+
 
   workflow_dispatch:
     inputs:
