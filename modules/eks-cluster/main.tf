@@ -8,7 +8,7 @@ data "aws_caller_identity" "current" {}
 ################################################################################
 
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
+  source  = "terraform-aws-modules/eks"
   version = "~> 19.0"
 
   cluster_name    = var.cluster_name
