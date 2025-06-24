@@ -57,9 +57,11 @@ jobs:
         working-directory: ${{ env.TF_DIR }}
         run: terraform fmt -check
 
-      - name: Clean Terraform Cache
+      - name: Remove downloaded module cache
         working-directory: ${{ env.TF_DIR }}
-        run: rm -rf .terraform
+        run: |
+         rm -rf .terraform
+         rm -rf .terraform.lock.hcl
 
       - name: Terraform init
         working-directory: ${{ env.TF_DIR }}
@@ -94,9 +96,11 @@ jobs:
         with:
           terraform_version: "1.5.0"
 
-      - name: Clean Terraform Cache
+      - name: Remove downloaded module cache
         working-directory: ${{ env.TF_DIR }}
-        run: rm -rf .terraform
+        run: |
+         rm -rf .terraform
+         rm -rf .terraform.lock.hcl
 
       - name: Terraform init
         working-directory: ${{ env.TF_DIR }}
