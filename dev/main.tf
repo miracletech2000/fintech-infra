@@ -139,14 +139,15 @@ module "jenkins-server" {
 }
 
 
-module "terraform-node" {
-  source            = "./../modules/terraform-node"
+module "github-self-hosted-runner" {
+  source            = "./../modules/github-self-hosted-runner"
   ami_id            = local.final_ami_id
   instance_type     = var.instance_type
   key_name          = var.key_name
   main-region       = var.main-region
   security_group_id = module.eks-client-node.eks_client_sg
   subnet_id         = module.vpc.public_subnets[0]
+  cluster_name      = module.eks.cluster_name
 }
 
 module "maven-sonarqube-server" {
