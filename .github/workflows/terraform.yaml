@@ -1,6 +1,6 @@
 permissions:
   id-token: write # Required for OIDC authentication
-  contents: read # Required for actions/checkout
+  contents: read  # Required for actions/checkout
 
 name: Terraform-AWS-Infra-Deployment
 
@@ -12,8 +12,6 @@ on:
   pull_request:
     branches:
       - main
-
-
   workflow_dispatch:
     inputs:
       environment:
@@ -59,6 +57,10 @@ jobs:
         working-directory: ${{ env.TF_DIR }}
         run: terraform fmt -check
 
+      - name: Clean Terraform Cache
+        working-directory: ${{ env.TF_DIR }}
+        run: rm -rf .terraform
+
       - name: Terraform init
         working-directory: ${{ env.TF_DIR }}
         run: terraform init -backend-config="key=${{ env.TF_ENV }}/terraform.tfstate"
@@ -91,6 +93,10 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: "1.5.0"
+
+      - name: Clean Terraform Cache
+        working-directory: ${{ env.TF_DIR }}
+        run: rm -rf .terraform
 
       - name: Terraform init
         working-directory: ${{ env.TF_DIR }}
