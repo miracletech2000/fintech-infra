@@ -11,7 +11,7 @@ on:
       - dev
   pull_request:
     branches:
-      - main
+      - [main]
   workflow_dispatch:
     inputs:
       environment:
