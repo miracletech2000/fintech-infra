@@ -34,6 +34,8 @@ module "eks" {
 # # AWS ALB Controller
 # ################################################################################
 
+data "aws_caller_identity" "current" {}
+
 module "aws_alb_controller" {
   source = "./../modules/aws-alb-controller"
 
@@ -41,6 +43,7 @@ module "aws_alb_controller" {
   cluster_name      = var.cluster_name
   vpc_id            = module.vpc.vpc_id
   oidc_provider_arn = module.eks.oidc_provider_arn
+  account_id        = data.aws_caller_identity.current.account_id
 
   depends_on = [module.eks]
 }
