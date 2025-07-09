@@ -21,3 +21,8 @@ variable "oidc_provider_arn" {
   description = "OIDC provider ARN for IRSA"
   type        = string
 }
+
+variable "account_id" {
+  description = "AWS Account ID"
+  type        = string
+}
