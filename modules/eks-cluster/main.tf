@@ -118,7 +118,7 @@ module "eks" {
 
     github_runner = {
       kubernetes_groups = ["eks-admins"]
-      principal_arn     = "arn:aws:iam:::role/github-runner-ssm-role"
+      principal_arn     = "arn:aws:iam::831926583884:role/github-runner-ssm-role"
       policy_associations = [
         {
           policy_arn  = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
