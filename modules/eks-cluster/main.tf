@@ -107,10 +107,10 @@ module "eks" {
   access_entries = {
     fusi = {
       kubernetes_groups = ["eks-admins"]
-      principal_arn     = "arn:aws:iam::831926583884:user/mirac"
+      principal_arn     = "arn:aws:iam::999568710647:user/nfusi"
       policy_associations = [
         {
-          policy_arn  = "arn:aws:eks:999568710647:aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          policy_arn  = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
           access_scope = { type = "cluster" }
         }
       ]
